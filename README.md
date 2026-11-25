@@ -6,7 +6,7 @@
 ## 目录结构
 
 ```
-cmod1/
+cmod2026/
 ├── cmo2026-day1.tex     # LaTeX 源码（XeLaTeX 编译）
 ├── lean/                # Lean 4 + Mathlib 形式化陈述工程
 └── .gitignore           # LaTeX / VSCode / Lean 构建产物（.lake/）的忽略规则
