@@ -5,8 +5,7 @@
   本工程依赖 Mathlib，并按需只导入用到的模块：
   * `Mathlib.Data.Real.Basic`  — 实数 ℝ；
   * `Mathlib.Algebra.Ring.Parity` — `Odd` / `Even`（用于第 3 题的“一奇一偶”）；
-  * 第 2 题额外导入 `Mathlib.Data.Nat.Factorial.Basic` — 阶乘 `n!`；
-  * 第 3 题额外导入 `Mathlib.Analysis.Real.Sqrt` — 平方根 `Real.sqrt`。
+  * 第 2 题额外导入 `Mathlib.Data.Nat.Factorial.Basic` — 阶乘 `n!`。
 -/
 module
 
