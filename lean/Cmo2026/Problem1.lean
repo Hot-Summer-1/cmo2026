@@ -25,7 +25,7 @@ theorem problem1_part1 (m t : ℕ) (h : Admissible m t) : prop_problem1_part1 m 
   sorry
 
 /-- 第 1 题 (2) 所要求的常数 `C`（此处以 `sorry` 占位；本工程只陈述其性质，不计算数值）。 -/
-def your_answer_to_problem1_part2 : ℝ := sorry
+noncomputable def your_answer_to_problem1_part2 : ℝ := sorry
 
 /-- 第 1 题 (2): `C` 是上界, 且任何比它小的实数都不是上界, 即 `C` 是所有可行
     `t/m` 的最小上界（也就是“最小的实数 C”）。 -/
