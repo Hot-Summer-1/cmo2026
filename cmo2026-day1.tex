@@ -1,0 +1,65 @@
+% 2026 年(第 42 届)中国数学奥林匹克 第一天
+% 排版: 使用 XeLaTeX 编译; 正文标点统一为半角, 仅标题保留全角
+\documentclass[11pt,a4paper]{ctexart}
+
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{left=2.8cm,right=2.8cm,top=2.8cm,bottom=2.8cm}
+\usepackage{enumitem}
+
+\linespread{1.25}
+\setlength{\parindent}{2em}
+\setlength{\emergencystretch}{2em}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries 2026 年（42 届）中国数学奥林匹克}\\[6pt]
+  {\Large\bfseries 第一天}
+\end{center}
+
+\vspace{1em}
+
+%------------------------------------------------------------
+\noindent\textbf{1.}\; 称正整数数列 \(\{a_n\}\) 是好的, 如果
+\[
+  a_{n+1}=
+  \begin{cases}
+    a_n-1, & a_n>1,\\[2pt]
+    n, & a_n=1.
+  \end{cases}
+\]
+给定整数 \(m,t\ge 2\), 设好数列 \(\{a_n\}\) 满足
+\[
+  a_1=m=\frac{1}{t}\left(a_1+a_2+\cdots+a_t\right).
+\]
+\begin{enumerate}[label=(\arabic*),leftmargin=2.2em,itemsep=0.2em,topsep=0.4em]
+  \item 求证: \(t\ge \dfrac{5}{2}m\);
+  \item 对所有的 \(m,t\), 求最小的实数 \(C\), 使得 \(t\le Cm\).
+\end{enumerate}
+
+\vspace{1.6em}
+
+%------------------------------------------------------------
+\noindent\textbf{2.}\; 求证: 存在正整数 \(N\), 使得对任意整数 \(n\ge N\), 存在与 \(n!+1\) 互质的整数 \(a\), 使
+\mbox{\(a-1\)},\mbox{\(a^2-1\)},\mbox{\(\cdots\)},\mbox{\(a^{n^2}-1\)} 都不是 \(n!+1\) 的倍数.
+
+\vspace{1.6em}
+
+%------------------------------------------------------------
+\noindent\textbf{3.}\; 给定互质的正整数 \(a,b\), 满足 \(a>b\) 且 \(a,b\) 一奇一偶.
+
+平面直角坐标系上有一只“跳跳马”, 初始时在原点 \((0,0)\).
+
+一次甲跳跃是指: 将当前格的坐标加 \((a,b),(-b,a),(-a,-b),(b,-a)\) 之一;
+
+一次乙跳跃是指: 将当前格的坐标加 \((b,a),(-a,b),(-b,-a),(a,-b)\) 之一.
+
+\begin{enumerate}[label=(\arabic*),leftmargin=2.2em,itemsep=0.6em,topsep=0.4em]
+  \item 求证: 存在点 \(P\), 使得从原点到 \(P\) 不能用任意次乙跳跃和不超过
+        \(\sqrt{\dfrac{a^2+b^2}{2}}-100\) 次甲跳跃跳到;
+  \item 求证: 存在距原点不超过 \(\sqrt{a^2+b^2}\) 的点 \(Q\), 使得从原点到 \(Q\) 不能用不超过
+        \(\frac{\sqrt{2}\,a(a+b)}{\sqrt{a^2+2ab-b^2}}-100\) 次跳跃跳到.
+\end{enumerate}
+
+\end{document}
