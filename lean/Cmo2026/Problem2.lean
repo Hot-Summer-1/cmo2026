@@ -18,14 +18,16 @@ set_option autoImplicit false
 
 namespace CMO2026
 
-/-- 第 2 题。 -/
+/-- 第 2 题 -/
+def prop_problem2:Prop:=∃ N : ℕ,
+  ∀ n : ℕ, N ≤ n →
+    ∃ a : ℤ,
+      Int.gcd a ((n.factorial : ℤ) + 1) = 1 ∧
+        ∀ k : ℕ, 1 ≤ k → k ≤ n ^ 2 →
+          ¬ (((n.factorial : ℤ) + 1) ∣ a ^ k - 1)
+/-- 第 2 题的证明 -/
 theorem problem2 :
-    ∃ N : ℕ,
-      ∀ n : ℕ, N ≤ n →
-        ∃ a : ℤ,
-          Int.gcd a ((n.factorial : ℤ) + 1) = 1 ∧
-            ∀ k : ℕ, 1 ≤ k → k ≤ n ^ 2 →
-              ¬ (((n.factorial : ℤ) + 1) ∣ a ^ k - 1) := by
+    prop_problem2 := by
   sorry
 
 end CMO2026

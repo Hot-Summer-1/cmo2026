@@ -25,6 +25,7 @@ lean/
 ├── lean-toolchain       # leanprover/lean4:v4.37.0-rc1（与 Mathlib 对应）
 ├── lake-manifest.json   # 依赖锁定（mathlib 及各依赖的具体 commit）
 ├── Cmo2026.lean         # 根模块（import 全部题目）
+├── check.lean           # 检查用到的公理和证明定理的类型
 ├── README.md
 └── Cmo2026/
     ├── Defs.lean        # 公共定义：好数列、跳跳马位移与可达性、奇偶性

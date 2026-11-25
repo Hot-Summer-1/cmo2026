@@ -19,7 +19,9 @@ set_option autoImplicit false
 namespace CMO2026
 
 /-- 第 1 题 (1): 对题设条件下的 `m, t`, 有 `t ≥ (5/2) m`, 即 `2 t ≥ 5 m`。 -/
-theorem problem1_part1 (m t : ℕ) (h : Admissible m t) : 5 * m ≤ 2 * t := by
+def prop_problem1_part1(m t:ℕ):Prop:=5 * m ≤ 2 * t
+/-- 第 1 题 (1) 的证明 -/
+theorem problem1_part1 (m t : ℕ) (h : Admissible m t) : prop_problem1_part1 m t := by
   sorry
 
 /-- 第 1 题 (2) 所要求的常数 `C`（此处以 `sorry` 占位；本工程只陈述其性质，不计算数值）。 -/
@@ -27,9 +29,21 @@ def your_answer_to_problem1_part2 : ℝ := sorry
 
 /-- 第 1 题 (2): `C` 是上界, 且任何比它小的实数都不是上界, 即 `C` 是所有可行
     `t/m` 的最小上界（也就是“最小的实数 C”）。 -/
+def prop_problem1_part2:=IsUpperBound your_answer_to_problem1_part2 ∧
+      ∀ c : ℝ, c < your_answer_to_problem1_part2 → ¬ IsUpperBound c
+/-- 第 1 题 (2) 的证明-/
 theorem problem1_part2 :
-    IsUpperBound your_answer_to_problem1_part2 ∧
-      ∀ c : ℝ, c < your_answer_to_problem1_part2 → ¬ IsUpperBound c := by
+    prop_problem1_part2 := by
   sorry
+
+/-- 第 1 题两问合并 -/
+def prop_problem1:Prop:=(∀ (m t :ℕ),Admissible m t→prop_problem1_part1 m t)∧prop_problem1_part2
+/-- 第 1 题的证明 -/
+theorem problem1:
+     prop_problem1:= by
+  constructor
+  · intro m t h
+    exact problem1_part1 m t h
+  · exact problem1_part2
 
 end CMO2026

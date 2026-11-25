@@ -34,23 +34,38 @@ namespace CMO2026
 
 /-- 第 3 题 (1): 存在整点 `P`, 使得对一切满足 `2 (k+100)^2 ≤ a^2 + b^2` 的 `k`,
     都无法用 "任意次乙跳跃 + 不超过 `k` 次甲跳跃" 从原点跳到 `P`。 -/
+def prop_problem3_part1 (a b:ℤ):Prop :=
+    ∃ P : Point,
+      ∀ k : ℕ, 2 * ((k : ℤ) + 100) ^ 2 ≤ a ^ 2 + b ^ 2 → ¬ ReachableJia a b k P
+/-- 第 3 题 (1) 的证明 -/
 theorem problem3_part1 (a b : ℤ) (ha : 0 < a) (hb : 0 < b) (hba : b < a)
     (hcop : Int.gcd a b = 1) (hpar : OneOddOneEven a b) :
-    ∃ P : Point,
-      ∀ k : ℕ, 2 * ((k : ℤ) + 100) ^ 2 ≤ a ^ 2 + b ^ 2 → ¬ ReachableJia a b k P := by
+    prop_problem3_part1 a b:= by
   sorry
 
 /-- 第 3 题 (2): 存在距原点不超过 `√(a^2+b^2)` 的整点 `Q`（即
     `Q.1^2 + Q.2^2 ≤ a^2 + b^2`）, 使得对一切满足
     `(k+100)^2 (a^2+2ab-b^2) ≤ 2 a^2 (a+b)^2` 的 `k`,
     都无法用不超过 `k` 次跳跃（甲、乙任意搭配）从原点跳到 `Q`。 -/
+def prop_problem3_part2 (a b : ℤ) : Prop :=
+  ∃ Q : Point,
+    Q.1 ^ 2 + Q.2 ^ 2 ≤ a ^ 2 + b ^ 2 ∧
+      ∀ k : ℕ,
+        ((k : ℤ) + 100) ^ 2 * (a ^ 2 + 2 * a * b - b ^ 2) ≤ 2 * a ^ 2 * (a + b) ^ 2 →
+          ¬ ReachableAny a b k Q
+/-- 第 3 题 (2) 的证明 -/
 theorem problem3_part2 (a b : ℤ) (ha : 0 < a) (hb : 0 < b) (hba : b < a)
     (hcop : Int.gcd a b = 1) (hpar : OneOddOneEven a b) :
-    ∃ Q : Point,
-      Q.1 ^ 2 + Q.2 ^ 2 ≤ a ^ 2 + b ^ 2 ∧
-        ∀ k : ℕ,
-          ((k : ℤ) + 100) ^ 2 * (a ^ 2 + 2 * a * b - b ^ 2) ≤ 2 * a ^ 2 * (a + b) ^ 2 →
-            ¬ ReachableAny a b k Q := by
+    prop_problem3_part2 a b := by
   sorry
 
-end CMO2026
+/-- 第 3 题两问合并 -/
+def prop_problem3:Prop:=
+  ∀ a b : ℤ, 0 < a →0<b→b<a→Int.gcd a b=1→OneOddOneEven a b→prop_problem3_part1 a b∧prop_problem3_part2 a b
+/-- 第 3 题的证明 -/
+theorem problem3:
+    prop_problem3:=by
+  intro a b ha hb hba hcop hpar
+  constructor
+  · exact problem3_part1 a b ha hb hba hcop hpar
+  · exact problem3_part2 a b ha hb hba hcop hpar
