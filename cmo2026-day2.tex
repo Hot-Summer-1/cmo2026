@@ -1,0 +1,57 @@
+% 2026 年(第 42 届)中国数学奥林匹克 第二天
+% 排版: 使用 XeLaTeX 编译; 正文标点统一为半角, 仅标题保留全角
+\documentclass[11pt,a4paper]{ctexart}
+
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{left=2.8cm,right=2.8cm,top=2.8cm,bottom=2.8cm}
+\usepackage{enumitem}
+
+\linespread{1.25}
+\setlength{\parindent}{2em}
+\setlength{\emergencystretch}{2em}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries 2026 年（42 届）中国数学奥林匹克}\\[6pt]
+  {\Large\bfseries 第二天}
+\end{center}
+
+\vspace{1em}
+
+%------------------------------------------------------------
+\noindent\textbf{4.}\; 设 \(ABCD\) 为凸四边形, 且 \(AD\parallel BC\), 对角线 \(AC\) 与 \(BD\) 交于点 \(E\).
+圆 \(ABE\) 与圆 \(CDE\) 除点 \(E\) 外还交于点 \(F\). 点 \(G\) 在直线 \(EF\) 上, 且 \(AG\parallel BD\).
+若 \(EF\cdot EG=EA^{2}\), 求 \(\frac{AD}{BC}\) 的所有可能值.
+
+\vspace{1.6em}
+
+%------------------------------------------------------------
+\noindent\textbf{5.}\; 给定正整数 \(d,M\ge 2\). 设 \(S\) 是一个由 \(d\) 元自然数组组成的集合.
+对每个 \(1\le i\le d\), 记 \(a_{i}\) 为 \(S\) 中所有元素的第 \(i\) 个分量的平均值. 若
+\[
+  a_{i}\le M\quad (1\le i\le d-1),\qquad a_{d}\le 3M+1,
+\]
+求 \(|S|\) 的最大值.
+
+\vspace{1.6em}
+
+%------------------------------------------------------------
+\noindent\textbf{6.}\; 设 \(m<n\) 为正整数, 记 \([n]=\{1,2,\ldots,n\}\). 令 \(F(m,n)\) 为使下述命题成立的最小正实数 \(C\).
+存在 \([n]\) 的一个 \(m\) 元子集 \(K\), 使得对任意满足
+\[
+  x_{1}\ge x_{2}\ge\cdots\ge x_{n},\qquad
+  \sum_{i=1}^{n}x_{i}=0,\qquad
+  \sum_{i=1}^{n}x_{i}^{2}=1
+\]
+的实数 \(x_{1},\ldots,x_{n}\), 均有
+\[
+  0\le\sum_{i\in K}x_{i}\le C.
+\]
+\begin{enumerate}[label=(\arabic*),leftmargin=2.2em,itemsep=0.2em,topsep=0.4em]
+  \item 求 \(F(20,26)\);
+  \item 证明对充分大的 \(n\), 有 \(\min_{1\le m\le n-1}F(m,n)<0.85\).
+\end{enumerate}
+
+\end{document}

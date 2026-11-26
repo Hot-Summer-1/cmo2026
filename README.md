@@ -1,20 +1,33 @@
-# 2026 年（第 42 届）中国数学奥林匹克 · 第一天
+# 2026 年（第 42 届）中国数学奥林匹克 · 两日试题
 
-本目录整理CMO题的两种成果：**LaTeX 排版**与
-**Lean 4 形式化陈述**。两者互相独立。
+本目录整理 CMO 试题的两种成果：**LaTeX 排版**与
+**Lean 4 形式化陈述**。两者互相独立；其中 Lean 形式化目前只覆盖第一天。
 
 ## 目录结构
 
 ```
-cmod2026/
-├── cmo2026-day1.tex     # LaTeX 源码（XeLaTeX 编译）
+cmo2026/
+├── cmo2026-day1.tex     # 第一天（第 1–3 题）LaTeX 源码（XeLaTeX 编译）
+├── cmo2026-day2.tex     # 第二天（第 4–6 题）LaTeX 源码（XeLaTeX 编译）
 ├── lean/                # Lean 4 + Mathlib 形式化陈述工程
-└── .gitignore           # LaTeX / VSCode / Lean 构建产物（.lake/）的忽略规则
+└── .gitignore           # LaTeX / VSCode / Lean 构建产物（.lake/、*.pdf 等）的忽略规则
 ```
 
 ## LaTeX 排版
 
-- 编译：`xelatex cmo2026-day1.tex`（使用 `ctexart` 文档类，需 XeLaTeX）。
+- 编译：`xelatex cmo2026-day1.tex`、`xelatex cmo2026-day2.tex`
+  （使用 `ctexart` 文档类，需 XeLaTeX）。
+
+## 题目一览
+
+| 题号 | 内容 | LaTeX | Lean |
+| --- | --- | --- | --- |
+| 1 | 数列：“好数列”的递推与 `t`、`m` 的关系 | `cmo2026-day1.tex` | `problem1_part1`、`problem1_part2` |
+| 2 | 数论：模 `n!+1` 的互质整数与幂次 | 同上 | `problem2` |
+| 3 | 格点跳跃：甲、乙两种跳跃的可达性估计 | 同上 | `problem3_part1`、`problem3_part2` |
+| 4 | 平面几何：梯形中的圆与平行线，求 `AD/BC` | `cmo2026-day2.tex` | —（未形式化） |
+| 5 | 组合：`d` 元自然数组之集的分量平均值约束，求集合 `S` 的最大元素个数 | 同上 | —（未形式化） |
+| 6 | 组合与不等式：常数 `F(m,n)` 的计算与上界 | 同上 | —（未形式化） |
 
 ## Lean 形式化陈述（`lean/` 子目录）
 
@@ -32,6 +45,7 @@ cmod2026/
 
 - 文件：`Cmo2026/Defs.lean`（公共定义）、`Problem1.lean`、`Problem2.lean`、
   `Problem3.lean`；根模块 `Cmo2026.lean`。
+- 当前只形式化了**第一天**（第 1–3 题）；第二天的第 4–6 题尚无 Lean 陈述。
 - 对应关系：
 
   | 题 | Lean 陈述 | 约定 |
@@ -42,6 +56,4 @@ cmod2026/
   | 3(1) | `problem3_part1` | `∃ P, ∀ k, 2(k+100)² ≤ a²+b² → ¬ ReachableJia a b k P` |
   | 3(2) | `problem3_part2` | `∃ Q, Q₁²+Q₂² ≤ a²+b² ∧ ∀ k, (k+100)²(a²+2ab−b²) ≤ 2a²(a+b)² → ¬ ReachableAny a b k Q` |
 
-- 第 3 题不使用实数：根式与距离条件在 `a > b > 0` 下等价地写成整数不等式
-  （详见 `lean/Cmo2026/Problem3.lean` 头部注释）；可达性的步数预算用 `ℕ`。
 - `lean/README.md` 有更详细的模块说明与形式化对照表。
