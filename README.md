@@ -57,6 +57,6 @@ cmo2026/
   | 3(2) | `problem3_part2` | `∃ Q, Q₁²+Q₂² ≤ a²+b² ∧ ∀ k, (k+100)²(a²+2ab−b²) ≤ 2a²(a+b)² → ¬ ReachableAny a b k Q` |
   | 4 | `prop_problem4_part1 ∧ prop_problem4_part2`（`problem4`） | 凸四边形、`AD∥BC`、`IsSegmentIntersection`、`circumsphere` 等见 `Defs.lean`；答案 `your_answer_to_problem4 : Set ℝ` 用两条刻画 |
   | 5 | `prop_problem5_part1 ∧ prop_problem5_part2`（`problem5`） | `S : Finset (Fin d → ℕ)`（0-based 分量），平均值在 `ℚ`；答案 `your_answer_to_problem5 d M : ℕ` |
-  | 6 | `prop_problem6_part1 ∧ prop_problem6_part2`（`problem6`） | `F m n h1 h2`（`h1 : 1 ≤ m`，`h2 : m < n`）= 可容许 `m` 元子集上 `sup ∑_{i∈K} x_i` 的最小值；`minOverM n` 为 `min_{1≤m≤n−1} F(m,n)` |
+  | 6 | `prop_problem6_part1 ∧ prop_problem6_part2`（`problem6`） | `F m n`（全函数，参数不合法即 `m = 0` 或 `n ≤ m` 时返回 `0`）= 可容许 `m` 元子集上 `sup ∑_{i∈K} x_i` 的最小值；`minOverM n` 为 `min_{1≤m≤n−1} F(m,n)` |
 
 - `lean/README.md` 有更详细的模块说明与形式化对照表。

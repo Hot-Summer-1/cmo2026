@@ -464,22 +464,25 @@ noncomputable def SetOfSmallestUpperBoundOfAdmissibleSubSetWithCard(m:ℕ)(n:ℕ
   exact (((Finset.univ : Finset (Fin n)).powersetCard m).filter AdmissibleSubSet).image
     SmallestUpperBoundOfSumOfSubFinSeq
 /-- 题中的 `F(m,n)`：在所有可容许的 `m` 元子集 `K` 上，`∑_{i∈K} x_i` 的上确界的最小值；
-    等价于“使题述命题成立的最小正实数 `C`”。 -/
-noncomputable def F (m:ℕ)(n:ℕ)(_h1:1≤m)(h2:m<n):ℝ:=
+    等价于“使题述命题成立的最小正实数 `C`”。
+
+    为便于使用，`F` 写成全函数：参数不合法（`m = 0` 或 `n ≤ m`）时约定返回 `0`。 -/
+noncomputable def F (m:ℕ)(n:ℕ):ℝ:=
+  if h1:m=0 then 0 else if h2:n≤m then 0 else
   (SetOfSmallestUpperBoundOfAdmissibleSubSetWithCard m n).min' (by
     classical
-    obtain ⟨K, hKcard, hKadm⟩ := exists_admissibleSubSet h2
+    obtain ⟨K, hKcard, hKadm⟩ := exists_admissibleSubSet (not_le.mp h2)
     unfold SetOfSmallestUpperBoundOfAdmissibleSubSetWithCard
     rw [Finset.image_nonempty]
     exact ⟨K, Finset.mem_filter.mpr
       ⟨Finset.mem_powersetCard.mpr ⟨Finset.subset_univ K, hKcard⟩, hKadm⟩⟩)
-/-- `F(m,n)` 恒为正：对 `1 ≤ m < n` 有 `0 < F m n h1 h2`。
+/-- `F(m,n)` 恒为正：对 `1 ≤ m < n` 有 `0 < F m n`。
 
 证明用尖峰（归一化）序列 `x`：令 `v i0 = n-1`（其中 `i0 = 0`）、其余 `v i = -1`，
 `t = √((n-1)n)`，`x = v / t`。则 `x` 是单调不增、和为 `0`、平方和为 `1` 的好序列；
 并且任意可容许的 `m` 元子集 `K` 必含 `0`，此时 `∑_{i∈K} x i = (n-m)/t > 0`。
 于是每个 `U_K = sSup {∑_{i∈K} x i}` 都为正，从而 `F = min_K U_K > 0`。 -/
-lemma F_pos (m n : ℕ) (h1 : 1 ≤ m) (h2 : m < n) : 0 < F m n h1 h2 := by
+lemma F_pos (m n : ℕ) (h1 : 1 ≤ m) (h2 : m < n) : 0 < F m n := by
   classical
   have hn2 : 2 ≤ n := by omega
   have hn2' : (2 : ℝ) ≤ (n : ℝ) := by exact_mod_cast hn2
@@ -624,6 +627,9 @@ lemma F_pos (m n : ℕ) (h1 : 1 ≤ m) (h2 : m < n) : 0 < F m n h1 h2 := by
     exact lt_of_lt_of_le hpos hle
   -- 目标：`F` 是这些上确界的最小值
   unfold F
+  split_ifs with h1 h2
+  omega
+  omega
   rw [Finset.lt_min'_iff]
   intro b hb
   unfold SetOfSmallestUpperBoundOfAdmissibleSubSetWithCard at hb
@@ -635,17 +641,11 @@ lemma F_pos (m n : ℕ) (h1 : 1 ≤ m) (h2 : m < n) : 0 < F m n h1 h2 := by
   obtain ⟨-, hKcard⟩ := hKpw
   exact hKpos K hKcard hKadm
 
-noncomputable def ImageOfF(n:ℕ):Finset ℝ:=(Finset.Ico 1 n).attach.image (fun ⟨m,hm⟩ => F m n (by
-  simp[Finset.mem_Ico] at hm
-  obtain⟨h,_⟩:=hm
-  exact h)
-  (by
-  simp[Finset.mem_Ico] at hm
-  obtain⟨_,h⟩:=hm
-  exact h))
+noncomputable def ImageOfF(n:ℕ):Finset ℝ:=(Finset.Ico 1 n).image (fun m => F m n)
+
 lemma ImageOfFNonEmpty(n:ℕ)(hn:n≥2):(ImageOfF n).Nonempty:=by
   unfold ImageOfF
-  rw[Finset.image_nonempty,Finset.attach_nonempty_iff]
+  rw[Finset.image_nonempty]
   use 1
   rw[Finset.mem_Ico]
   omega

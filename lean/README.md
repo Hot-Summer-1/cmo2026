@@ -116,9 +116,9 @@ lake build
 | `∑x_i = 0`、`∑x_i² = 1` | `SumOfFinSeq S id = 0`、`SumOfFinSeq S (fun x => x^2) = 1`（合称 `IsGoodFinSeq`） |
 | `K ⊆ [n]` 为 `m` 元子集 | `K : Finset (Fin n)`，`K.card = m` |
 | `∑_{i∈K} x_i` | `SumOfSubFinSeq S K` |
-| `F(m,n)` | `F m n h1 h2`（`h1 : 1 ≤ m`，`h2 : m < n`）：在所有**可容许**的 `m` 元子集上取 `sSup {∑_{i∈K} S i}` 的最小值（可容许性由 `AdmissibleSubSet` 表达；用 `firstIndices` 证明可容许子集存在） |
+| `F(m,n)` | `F m n`（全函数；参数不合法即 `m = 0` 或 `n ≤ m` 时返回 `0`）：在所有**可容许**的 `m` 元子集上取 `sSup {∑_{i∈K} S i}` 的最小值（可容许性由 `AdmissibleSubSet` 表达；用 `firstIndices` 证明可容许子集存在） |
 | `min_{1≤m≤n-1} F(m,n)` | `minOverM n`（`n < 2` 时约定为 `0`） |
-| `F > 0` | `F_pos`：`1 ≤ m → m < n → 0 < F m n h1 h2`，无 `sorry` 的引理 |
+| `F > 0` | `F_pos`：`1 ≤ m → m < n → 0 < F m n`，无 `sorry` 的引理 |
 
 几点说明：
 
@@ -128,5 +128,6 @@ lake build
   构造 `Affine.Simplex.circumsphere` 所需要的（Mathlib 的 `Simplex.mk` 要求独立性证明）。
 * 第 5 题使用 0-based 分量（`Fin d`），平均值取在 `ℚ` 中。
 * 第 6 题 `F` 只对**可容许**的 `m` 元子集取最小值（`AdmissibleSubSet`：所有好序列在
-  `K` 上的和都非负）；`F_pos` 证明 `F > 0`。`minOverM` 是 `ImageOfF n` 的最小值，
+  `K` 上的和都非负）；`F` 写成全函数，参数不合法（`m = 0` 或 `n ≤ m`）时约定返回 `0`，
+  `F_pos` 证明合法参数下 `F > 0`。`minOverM` 是 `ImageOfF n` 的最小值，
   `n < 2` 时 `ImageOfF n` 为空，约定取 `0`。
