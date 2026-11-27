@@ -126,8 +126,7 @@ lake build
   “任意构型的 `AD/BC` 都在集合中”和“集合中每个值都能实现”两条来刻画“所有可能值”。
   另外，`prop_problem4_part2` 中 `∃ (hQuadrilateral : …) (hE : …)` 的证明绑定是
   构造 `Affine.Simplex.circumsphere` 所需要的（Mathlib 的 `Simplex.mk` 要求独立性证明）。
-* 第 5 题使用 0-based 分量（`Fin d`），平均值取在 `ℚ` 中；`IsGoodSet` 不再依赖
-  `d ≥ 2` 的证明参数，命题中以 `2 ≤ d` 的形式出现。
+* 第 5 题使用 0-based 分量（`Fin d`），平均值取在 `ℚ` 中。
 * 第 6 题 `F` 只对**可容许**的 `m` 元子集取最小值（`AdmissibleSubSet`：所有好序列在
   `K` 上的和都非负）；`F_pos` 证明 `F > 0`。`minOverM` 是 `ImageOfF n` 的最小值，
   `n < 2` 时 `ImageOfF n` 为空，约定取 `0`。
